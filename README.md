@@ -4,6 +4,50 @@ Convert [Excalidraw](https://excalidraw.com/) diagrams to [Mermaid](https://merm
 
 No browser required. Works in Node.js and Bun.
 
+## Before & After
+
+### Decision Flowchart
+
+**Excalidraw input:**
+
+![Excalidraw decision flowchart](assets/example-excalidraw.png)
+
+**Mermaid output:**
+
+```mermaid
+graph TD
+    A(Start)
+    B{Valid?}
+    C[Success]
+    D[Error]
+    A --> B
+    B -->|Yes| C
+    B -.->|No| D
+```
+
+### Shape Mapping
+
+**Excalidraw input:**
+
+![Excalidraw shapes](assets/example-shapes-excalidraw.png)
+
+**Mermaid output:**
+
+```mermaid
+graph LR
+    A[Rectangle]
+    B(Rounded)
+    C{Choice}
+    D((End))
+    A --> B
+    B -.-> C
+    C ==> D
+```
+
+Every Excalidraw shape maps to its Mermaid equivalent. Arrow styles are preserved too — solid, dashed, and thick.
+
+---
+
 ## Install
 
 ```bash
@@ -104,38 +148,10 @@ console.log(result.mermaid);
 - **Auto direction** — Detects whether layout flows left-to-right or top-to-bottom
 - **Special characters** — Labels with colons, brackets, pipes, etc. are automatically quoted
 
-## Example
-
-Given an Excalidraw diagram with Start → Decision → Success/Error:
-
-```
-graph TD
-    A(Start)
-    B{Valid?}
-    C[Success]
-    D[Error]
-    A --> B
-    B -->|Yes| C
-    B -.->|No| D
-```
-
-Which renders as:
-
-```mermaid
-graph TD
-    A(Start)
-    B{Valid?}
-    C[Success]
-    D[Error]
-    A --> B
-    B -->|Yes| C
-    B -.->|No| D
-```
-
 ## Development
 
 ```bash
-# Run tests
+# Run tests (88 tests)
 bun test
 
 # Run a single test file
