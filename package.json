@@ -30,6 +30,10 @@
   },
   "author": "moona3k",
   "license": "MIT",
+  "homepage": "https://github.com/moona3k/excalidraw-to-mermaid",
+  "bugs": {
+    "url": "https://github.com/moona3k/excalidraw-to-mermaid/issues"
+  },
   "engines": {
     "node": ">=18.0.0"
   }

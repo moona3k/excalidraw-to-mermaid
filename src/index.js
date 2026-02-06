@@ -1,5 +1,5 @@
 /**
- * @moona3k/excalidraw-to-mermaid
+ * excalidraw-to-mermaid
  *
  * Convert Excalidraw diagrams to Mermaid flowchart syntax.
  */

@@ -1,5 +1,5 @@
 import { describe, test, expect } from "bun:test";
-import { readFileSync } from "fs";
+import { readFileSync, unlinkSync } from "fs";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 import { convert, convertFile } from "../src/index.js";
@@ -113,7 +113,6 @@ describe("convertFile", () => {
     expect(written).toBe(result.mermaid);
 
     // Cleanup
-    const { unlinkSync } = require("fs");
     unlinkSync(outPath);
   });
 });

@@ -187,7 +187,7 @@ bun test test/parser.test.js
 
 ## Motivation
 
-Inspired by [excalidraw/mermaid-to-excalidraw#66](https://github.com/excalidraw/mermaid-to-excalidraw/issues/66) — 100+ upvotes requesting the reverse direction (Excalidraw → Mermaid). This fills that gap.
+Inspired by a [popular Reddit post](https://github.com/excalidraw/mermaid-to-excalidraw/issues/66) requesting the reverse direction (Excalidraw → Mermaid). This fills that gap.
 
 ## License
 
