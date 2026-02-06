@@ -15,39 +15,28 @@ No browser required. Works in Node.js and Bun.
 **Mermaid output:**
 
 ```mermaid
-graph TD
-    subgraph frame_before["BEFORE (~78% full)"]
-        A(System Prompt)
-        B(Message 1)
-        C("Tool Result (5K)")
-        D(Message 2)
-        E("Tool Result (8K)")
-        F(Message N)
-        G("Buffer (45K reserved)")
+graph LR
+    subgraph before["BEFORE (~78% full)"]
+        direction TB
+        A(System Prompt) --- B(Message 1)
+        B --- C("Tool Result (5K)")
+        C --- D(Message 2)
+        D --- E("Tool Result (8K)")
+        E -.- F(Message N)
+        F --- G("Buffer (45K)")
     end
-    subgraph frame_after["AFTER (compacted)"]
-        H(System Prompt)
-        I(SUMMARY)
-        J(Recent File 1)
-        K(Recent File 2)
-        L(FREE SPACE)
-        M("Buffer (45K reserved)")
+    subgraph after["AFTER (compacted)"]
+        direction TB
+        H(System Prompt) --- I(SUMMARY)
+        I --- J(Recent File 1)
+        J --- K(Recent File 2)
+        K --- L(FREE SPACE)
+        L -.- M("Buffer (45K)")
     end
-    A --- B
-    B --- C
-    C --- D
-    D --- E
-    E --- F
-    F -.- G
-    H --- I
-    I --- J
-    J --- K
-    K --- L
-    L --- M
     E -->|compact| I
 ```
 
-Frames become subgraphs. Arrow labels, edge styles (solid, dashed), and node connections are all preserved.
+Side-by-side subgraphs with `graph LR` + `direction TB`. Arrow labels, edge styles (solid, dashed), and node connections are all preserved.
 
 ### Decision Flowchart
 
