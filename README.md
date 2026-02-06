@@ -6,6 +6,49 @@ No browser required. Works in Node.js and Bun.
 
 ## Before & After
 
+### Context Window Compaction
+
+**Excalidraw input:**
+
+![Excalidraw context compaction diagram](assets/example-compaction-excalidraw.png)
+
+**Mermaid output:**
+
+```mermaid
+graph TD
+    subgraph frame_before["BEFORE (~78% full)"]
+        A(System Prompt)
+        B(Message 1)
+        C("Tool Result (5K)")
+        D(Message 2)
+        E("Tool Result (8K)")
+        F(Message N)
+        G("Buffer (45K reserved)")
+    end
+    subgraph frame_after["AFTER (compacted)"]
+        H(System Prompt)
+        I(SUMMARY)
+        J(Recent File 1)
+        K(Recent File 2)
+        L(FREE SPACE)
+        M("Buffer (45K reserved)")
+    end
+    A --- B
+    B --- C
+    C --- D
+    D --- E
+    E --- F
+    F -.- G
+    H --- I
+    I --- J
+    J --- K
+    K --- L
+    L --- M
+    E -->|compact| I
+```
+
+Frames become subgraphs. Arrow labels, edge styles (solid, dashed), and node connections are all preserved.
+
 ### Decision Flowchart
 
 **Excalidraw input:**
