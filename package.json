@@ -1,0 +1,36 @@
+{
+  "name": "@moona3k/excalidraw-to-mermaid",
+  "version": "0.1.0",
+  "description": "Convert Excalidraw diagrams to Mermaid syntax",
+  "type": "module",
+  "bin": {
+    "excalidraw-to-mermaid": "src/cli.js"
+  },
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "test": "bun test"
+  },
+  "files": [
+    "src/"
+  ],
+  "keywords": [
+    "excalidraw",
+    "mermaid",
+    "diagram",
+    "flowchart",
+    "convert",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moona3k/excalidraw-to-mermaid.git"
+  },
+  "author": "moona3k",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

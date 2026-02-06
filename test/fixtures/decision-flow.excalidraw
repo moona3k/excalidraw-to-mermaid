@@ -1,0 +1,201 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "test",
+  "elements": [
+    {
+      "type": "rectangle",
+      "id": "start",
+      "x": 100,
+      "y": 50,
+      "width": 140,
+      "height": 60,
+      "roundness": { "type": 3 },
+      "strokeStyle": "solid",
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "start_text", "type": "text" },
+        { "id": "a1", "type": "arrow" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "start_text",
+      "x": 130,
+      "y": 68,
+      "width": 80,
+      "height": 24,
+      "text": "Start",
+      "containerId": "start",
+      "originalText": "Start",
+      "isDeleted": false
+    },
+    {
+      "type": "diamond",
+      "id": "decision",
+      "x": 95,
+      "y": 200,
+      "width": 150,
+      "height": 120,
+      "strokeStyle": "solid",
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "decision_text", "type": "text" },
+        { "id": "a1", "type": "arrow" },
+        { "id": "a_yes", "type": "arrow" },
+        { "id": "a_no", "type": "arrow" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "decision_text",
+      "x": 130,
+      "y": 248,
+      "width": 80,
+      "height": 24,
+      "text": "Valid?",
+      "containerId": "decision",
+      "originalText": "Valid?",
+      "isDeleted": false
+    },
+    {
+      "type": "rectangle",
+      "id": "success",
+      "x": 350,
+      "y": 220,
+      "width": 140,
+      "height": 60,
+      "strokeStyle": "solid",
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "success_text", "type": "text" },
+        { "id": "a_yes", "type": "arrow" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "success_text",
+      "x": 380,
+      "y": 238,
+      "width": 80,
+      "height": 24,
+      "text": "Success",
+      "containerId": "success",
+      "originalText": "Success",
+      "isDeleted": false
+    },
+    {
+      "type": "rectangle",
+      "id": "error",
+      "x": 100,
+      "y": 420,
+      "width": 140,
+      "height": 60,
+      "strokeStyle": "solid",
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "error_text", "type": "text" },
+        { "id": "a_no", "type": "arrow" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "error_text",
+      "x": 130,
+      "y": 438,
+      "width": 80,
+      "height": 24,
+      "text": "Error",
+      "containerId": "error",
+      "originalText": "Error",
+      "isDeleted": false
+    },
+    {
+      "type": "arrow",
+      "id": "a1",
+      "x": 170,
+      "y": 110,
+      "width": 0,
+      "height": 90,
+      "points": [[0, 0], [0, 90]],
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "isDeleted": false,
+      "groupIds": [],
+      "startBinding": { "elementId": "start", "focus": 0, "gap": 5 },
+      "endBinding": { "elementId": "decision", "focus": 0, "gap": 5 },
+      "startArrowhead": null,
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "arrow",
+      "id": "a_yes",
+      "x": 245,
+      "y": 260,
+      "width": 105,
+      "height": 0,
+      "points": [[0, 0], [105, 0]],
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "a_yes_text", "type": "text" }
+      ],
+      "startBinding": { "elementId": "decision", "focus": 0, "gap": 5 },
+      "endBinding": { "elementId": "success", "focus": 0, "gap": 5 },
+      "startArrowhead": null,
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "text",
+      "id": "a_yes_text",
+      "x": 280,
+      "y": 240,
+      "width": 30,
+      "height": 20,
+      "text": "Yes",
+      "containerId": "a_yes",
+      "originalText": "Yes",
+      "isDeleted": false
+    },
+    {
+      "type": "arrow",
+      "id": "a_no",
+      "x": 170,
+      "y": 320,
+      "width": 0,
+      "height": 100,
+      "points": [[0, 0], [0, 100]],
+      "strokeStyle": "dashed",
+      "strokeWidth": 2,
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "a_no_text", "type": "text" }
+      ],
+      "startBinding": { "elementId": "decision", "focus": 0, "gap": 5 },
+      "endBinding": { "elementId": "error", "focus": 0, "gap": 5 },
+      "startArrowhead": null,
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "text",
+      "id": "a_no_text",
+      "x": 180,
+      "y": 360,
+      "width": 30,
+      "height": 20,
+      "text": "No",
+      "containerId": "a_no",
+      "originalText": "No",
+      "isDeleted": false
+    }
+  ],
+  "appState": { "viewBackgroundColor": "#ffffff" },
+  "files": {}
+}

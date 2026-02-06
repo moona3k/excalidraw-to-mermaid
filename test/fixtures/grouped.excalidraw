@@ -1,0 +1,130 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "test",
+  "elements": [
+    {
+      "type": "frame",
+      "id": "frame_1",
+      "x": 40,
+      "y": 40,
+      "width": 400,
+      "height": 200,
+      "name": "Backend Services",
+      "isDeleted": false,
+      "groupIds": []
+    },
+    {
+      "type": "rectangle",
+      "id": "api",
+      "x": 60,
+      "y": 80,
+      "width": 160,
+      "height": 60,
+      "strokeStyle": "solid",
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "api_text", "type": "text" },
+        { "id": "a1", "type": "arrow" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "api_text",
+      "x": 90,
+      "y": 98,
+      "width": 100,
+      "height": 24,
+      "text": "API Server",
+      "containerId": "api",
+      "isDeleted": false
+    },
+    {
+      "type": "rectangle",
+      "id": "db",
+      "x": 260,
+      "y": 80,
+      "width": 160,
+      "height": 60,
+      "strokeStyle": "solid",
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "db_text", "type": "text" },
+        { "id": "a1", "type": "arrow" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "db_text",
+      "x": 290,
+      "y": 98,
+      "width": 100,
+      "height": 24,
+      "text": "Database",
+      "containerId": "db",
+      "isDeleted": false
+    },
+    {
+      "type": "rectangle",
+      "id": "client",
+      "x": 60,
+      "y": 320,
+      "width": 160,
+      "height": 60,
+      "strokeStyle": "solid",
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "client_text", "type": "text" },
+        { "id": "a2", "type": "arrow" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "client_text",
+      "x": 90,
+      "y": 338,
+      "width": 100,
+      "height": 24,
+      "text": "Client",
+      "containerId": "client",
+      "isDeleted": false
+    },
+    {
+      "type": "arrow",
+      "id": "a1",
+      "x": 220,
+      "y": 110,
+      "width": 40,
+      "height": 0,
+      "points": [[0, 0], [40, 0]],
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "isDeleted": false,
+      "startBinding": { "elementId": "api", "focus": 0, "gap": 5 },
+      "endBinding": { "elementId": "db", "focus": 0, "gap": 5 },
+      "startArrowhead": null,
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "arrow",
+      "id": "a2",
+      "x": 140,
+      "y": 320,
+      "width": 0,
+      "height": -180,
+      "points": [[0, 0], [0, -180]],
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "isDeleted": false,
+      "startBinding": { "elementId": "client", "focus": 0, "gap": 5 },
+      "endBinding": { "elementId": "api", "focus": 0, "gap": 5 },
+      "startArrowhead": null,
+      "endArrowhead": "arrow"
+    }
+  ],
+  "appState": { "viewBackgroundColor": "#ffffff" },
+  "files": {}
+}

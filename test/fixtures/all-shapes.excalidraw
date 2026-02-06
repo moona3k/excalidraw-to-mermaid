@@ -1,0 +1,165 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "test",
+  "elements": [
+    {
+      "type": "rectangle",
+      "id": "rect",
+      "x": 60,
+      "y": 100,
+      "width": 180,
+      "height": 70,
+      "roundness": null,
+      "strokeStyle": "solid",
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "rect_text", "type": "text" },
+        { "id": "a1", "type": "arrow" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "rect_text",
+      "x": 90,
+      "y": 123,
+      "width": 120,
+      "height": 24,
+      "text": "Rectangle",
+      "containerId": "rect",
+      "isDeleted": false
+    },
+    {
+      "type": "rectangle",
+      "id": "rounded",
+      "x": 340,
+      "y": 100,
+      "width": 180,
+      "height": 70,
+      "roundness": { "type": 3 },
+      "strokeStyle": "solid",
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "rounded_text", "type": "text" },
+        { "id": "a1", "type": "arrow" },
+        { "id": "a2", "type": "arrow" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "rounded_text",
+      "x": 370,
+      "y": 123,
+      "width": 120,
+      "height": 24,
+      "text": "Rounded",
+      "containerId": "rounded",
+      "isDeleted": false
+    },
+    {
+      "type": "diamond",
+      "id": "dia",
+      "x": 620,
+      "y": 80,
+      "width": 120,
+      "height": 110,
+      "strokeStyle": "solid",
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "dia_text", "type": "text" },
+        { "id": "a2", "type": "arrow" },
+        { "id": "a3", "type": "arrow" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "dia_text",
+      "x": 650,
+      "y": 123,
+      "width": 60,
+      "height": 24,
+      "text": "Choice",
+      "containerId": "dia",
+      "isDeleted": false
+    },
+    {
+      "type": "ellipse",
+      "id": "ellip",
+      "x": 840,
+      "y": 95,
+      "width": 100,
+      "height": 80,
+      "strokeStyle": "solid",
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "ellip_text", "type": "text" },
+        { "id": "a3", "type": "arrow" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "ellip_text",
+      "x": 860,
+      "y": 123,
+      "width": 60,
+      "height": 24,
+      "text": "End",
+      "containerId": "ellip",
+      "isDeleted": false
+    },
+    {
+      "type": "arrow",
+      "id": "a1",
+      "x": 240,
+      "y": 135,
+      "width": 100,
+      "height": 0,
+      "points": [[0, 0], [100, 0]],
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "isDeleted": false,
+      "startBinding": { "elementId": "rect", "focus": 0, "gap": 5 },
+      "endBinding": { "elementId": "rounded", "focus": 0, "gap": 5 },
+      "startArrowhead": null,
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "arrow",
+      "id": "a2",
+      "x": 520,
+      "y": 135,
+      "width": 100,
+      "height": 0,
+      "points": [[0, 0], [100, 0]],
+      "strokeStyle": "dashed",
+      "strokeWidth": 2,
+      "isDeleted": false,
+      "startBinding": { "elementId": "rounded", "focus": 0, "gap": 5 },
+      "endBinding": { "elementId": "dia", "focus": 0, "gap": 5 },
+      "startArrowhead": null,
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "arrow",
+      "id": "a3",
+      "x": 740,
+      "y": 135,
+      "width": 100,
+      "height": 0,
+      "points": [[0, 0], [100, 0]],
+      "strokeStyle": "solid",
+      "strokeWidth": 4,
+      "isDeleted": false,
+      "startBinding": { "elementId": "dia", "focus": 0, "gap": 5 },
+      "endBinding": { "elementId": "ellip", "focus": 0, "gap": 5 },
+      "startArrowhead": null,
+      "endArrowhead": "arrow"
+    }
+  ],
+  "appState": { "viewBackgroundColor": "#ffffff" },
+  "files": {}
+}
