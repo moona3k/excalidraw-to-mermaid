@@ -1,4 +1,4 @@
-# @moona3k/excalidraw-to-mermaid
+# excalidraw-to-mermaid
 
 Convert [Excalidraw](https://excalidraw.com/) diagrams to [Mermaid](https://mermaid.js.org/) flowchart syntax.
 
@@ -46,18 +46,45 @@ graph LR
 
 Every Excalidraw shape maps to its Mermaid equivalent. Arrow styles are preserved too — solid, dashed, and thick.
 
+### Real-World Architecture
+
+**Excalidraw input:**
+
+![Excalidraw architecture diagram](assets/example-architecture-excalidraw.png)
+
+**Mermaid output:**
+
+```mermaid
+graph LR
+    A(CloudFront)
+    B(React SPA)
+    C(REST API)
+    D(Redis)
+    E(Stripe API)
+    F(PostgreSQL)
+    G(S3)
+    A --> B
+    B -->|REST calls| C
+    C -.->|cache| D
+    C -->|payments| E
+    C -->|queries| F
+    F -.->|uploads| G
+```
+
+Multi-tier architecture with labeled edges, dashed connections for caching/storage, and container frames automatically filtered out.
+
 ---
 
 ## Install
 
 ```bash
-npm install -g @moona3k/excalidraw-to-mermaid
+npm install -g excalidraw-to-mermaid
 ```
 
 Or use directly with npx:
 
 ```bash
-npx @moona3k/excalidraw-to-mermaid diagram.excalidraw
+npx excalidraw-to-mermaid diagram.excalidraw
 ```
 
 ## CLI Usage
@@ -89,7 +116,7 @@ excalidraw-to-mermaid diagram.excalidraw --json
 ## API Usage
 
 ```js
-import { convert, convertFile } from "@moona3k/excalidraw-to-mermaid";
+import { convert, convertFile } from "excalidraw-to-mermaid";
 
 // From file
 const result = convertFile("diagram.excalidraw");

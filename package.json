@@ -1,6 +1,6 @@
 {
-  "name": "@moona3k/excalidraw-to-mermaid",
-  "version": "0.1.0",
+  "name": "excalidraw-to-mermaid",
+  "version": "0.2.0",
   "description": "Convert Excalidraw diagrams to Mermaid syntax",
   "type": "module",
   "bin": {

@@ -44,6 +44,12 @@ export function parseDocument(doc) {
     if (!NODE_TYPES.has(el.type)) continue;
 
     const label = textByContainer.get(el.id) || "";
+
+    // Skip container rectangles: dashed stroke + no label = decorative frame
+    if (el.type === "rectangle" && el.strokeStyle === "dashed" && !label) {
+      continue;
+    }
+
     const shape = mapShape(el);
 
     nodes.set(el.id, {
