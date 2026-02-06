@@ -32,6 +32,9 @@ export function toMermaid(graph, options = {}) {
     }
   }
 
+  // Track rendered nodes to prevent duplicates across groups
+  const renderedNodes = new Set();
+
   // Render groups with their contained nodes
   for (const group of groups.values()) {
     const groupShortId = sanitizeId(group.id);
@@ -43,9 +46,11 @@ export function toMermaid(graph, options = {}) {
     }
 
     for (const memberId of group.members) {
+      if (renderedNodes.has(memberId)) continue;
       const node = nodes.get(memberId);
       if (node) {
         lines.push(`        ${renderNode(idMap.get(memberId), node)}`);
+        renderedNodes.add(memberId);
       }
     }
     lines.push("    end");

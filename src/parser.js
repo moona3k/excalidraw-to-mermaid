@@ -122,7 +122,6 @@ export function mapShape(el) {
  * Map an Excalidraw arrow to a Mermaid edge style.
  */
 export function mapArrowStyle(el) {
-  const hasStart = el.startArrowhead != null;
   const hasEnd = el.endArrowhead != null && el.endArrowhead !== "none";
   const isDashed =
     el.strokeStyle === "dashed" || el.strokeStyle === "dotted";

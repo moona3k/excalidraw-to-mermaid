@@ -56,7 +56,11 @@ const doc = JSON.parse(fs.readFileSync("diagram.excalidraw", "utf-8"));
 const result = convert(doc, { direction: "LR" });
 console.log(result.mermaid);
 // → graph LR
-//       A[Start] --> B[Process] --> C[End]
+//       A[Start]
+//       B[Process]
+//       C[End]
+//       A --> B
+//       B --> C
 ```
 
 ### Return value
