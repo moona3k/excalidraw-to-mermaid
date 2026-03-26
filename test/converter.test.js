@@ -83,6 +83,13 @@ describe("renderConnector", () => {
   test("arrow both → <-->", () => expect(renderConnector({ style: "arrow", direction: "both" })).toBe("<-->"));
   test("dotted both → <-.->", () => expect(renderConnector({ style: "dotted", direction: "both" })).toBe("<-.->"));
   test("thick both → <==>", () => expect(renderConnector({ style: "thick", direction: "both" })).toBe("<==>"));
+
+  // None (no arrowheads) — always undirected regardless of style
+  test("arrow none → ---", () => expect(renderConnector({ style: "arrow", direction: "none" })).toBe("---"));
+  test("dotted none → -.-", () => expect(renderConnector({ style: "dotted", direction: "none" })).toBe("-.-"));
+  test("thick none → ===", () => expect(renderConnector({ style: "thick", direction: "none" })).toBe("==="));
+  test("thick-line none → ===", () => expect(renderConnector({ style: "thick-line", direction: "none" })).toBe("==="));
+  test("dotted-line none → -.-", () => expect(renderConnector({ style: "dotted-line", direction: "none" })).toBe("-.-"));
 });
 
 describe("quoteLabel", () => {

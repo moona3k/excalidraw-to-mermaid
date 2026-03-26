@@ -82,8 +82,8 @@ export function parseDocument(doc) {
     // Get arrow label (bound text on the arrow itself)
     const label = textByContainer.get(el.id) || "";
 
-    const style = mapArrowStyle(el);
     const direction = mapArrowDirection(el);
+    const style = mapArrowStyle(el, direction !== "none");
 
     edges.push({
       id: el.id,
@@ -128,9 +128,14 @@ export function mapShape(el) {
 
 /**
  * Map an Excalidraw arrow to a Mermaid edge style.
+ *
+ * @param {object} el - Excalidraw arrow element
+ * @param {boolean} [hasArrowhead] - Whether any arrowhead is present (avoids recomputing direction)
  */
-export function mapArrowStyle(el) {
-  const hasArrowhead = mapArrowDirection(el) !== "none";
+export function mapArrowStyle(el, hasArrowhead) {
+  if (hasArrowhead === undefined) {
+    hasArrowhead = mapArrowDirection(el) !== "none";
+  }
   const isDashed =
     el.strokeStyle === "dashed" || el.strokeStyle === "dotted";
   const isThick = (el.strokeWidth || 1) >= 4;

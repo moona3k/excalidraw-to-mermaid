@@ -138,6 +138,13 @@ export function renderNode(shortId, node) {
 export function renderConnector(edge) {
   const dir = edge.direction || "forward";
 
+  // No arrowheads — undirected lines
+  if (dir === "none") {
+    if (edge.style === "thick" || edge.style === "thick-line") return "===";
+    if (edge.style === "dotted" || edge.style === "dotted-line") return "-.-";
+    return "---";
+  }
+
   switch (edge.style) {
     case "thick":
       if (dir === "both") return "<==>";

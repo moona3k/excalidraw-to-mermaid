@@ -109,6 +109,24 @@ describe("mapArrowStyle", () => {
       endArrowhead: "arrow",
     })).toBe("arrow");
   });
+
+  test("thick reverse arrow (startArrowhead only) → thick", () => {
+    expect(mapArrowStyle({
+      strokeStyle: "solid",
+      strokeWidth: 4,
+      startArrowhead: "arrow",
+      endArrowhead: null,
+    })).toBe("thick");
+  });
+
+  test("dashed reverse arrow (startArrowhead only) → dotted", () => {
+    expect(mapArrowStyle({
+      strokeStyle: "dashed",
+      strokeWidth: 2,
+      startArrowhead: "arrow",
+      endArrowhead: null,
+    })).toBe("dotted");
+  });
 });
 
 describe("mapArrowDirection", () => {
