@@ -168,6 +168,16 @@ console.log(result.mermaid);
 | Thick arrow | Bold arrow | `==>` |
 | Thick line | Bold line | `===` |
 
+### Arrow directions
+
+| Excalidraw | Mermaid | Example |
+|-----------|---------|---------|
+| Forward (default) | Arrow at end | `-->` |
+| Reverse | Arrow at start | `<--` |
+| Bidirectional | Arrows at both ends | `<-->` |
+
+Reverse and bidirectional arrows work with all edge styles (solid, dashed, thick). Bidirectional syntax (`<-->`, `<-.->`, `<==>`) requires Mermaid v9.3+.
+
 ### Other features
 
 - **Arrow labels** — Bound text on arrows becomes edge labels (`-->|label|`)
@@ -178,7 +188,7 @@ console.log(result.mermaid);
 ## Development
 
 ```bash
-# Run tests (88 tests)
+# Run tests (118 tests)
 bun test
 
 # Run a single test file

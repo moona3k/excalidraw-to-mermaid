@@ -131,20 +131,39 @@ export function renderNode(shortId, node) {
 
 /**
  * Render an edge connector string.
+ *
+ * Combines line style (solid/dotted/thick) with direction
+ * (forward/reverse/both/none) to produce the correct Mermaid connector.
  */
 export function renderConnector(edge) {
+  const dir = edge.direction || "forward";
+
+  // No arrowheads — undirected lines
+  if (dir === "none") {
+    if (edge.style === "thick" || edge.style === "thick-line") return "===";
+    if (edge.style === "dotted" || edge.style === "dotted-line") return "-.-";
+    return "---";
+  }
+
   switch (edge.style) {
     case "thick":
+      if (dir === "both") return "<==>";
+      if (dir === "reverse") return "<==";
       return "==>";
     case "thick-line":
       return "===";
     case "dotted":
+      if (dir === "both") return "<-.->";
+      if (dir === "reverse") return "<-.-";
       return "-.->";
     case "dotted-line":
       return "-.-";
     case "line":
       return "---";
     case "arrow":
+      if (dir === "both") return "<-->";
+      if (dir === "reverse") return "<--";
+      return "-->";
     default:
       return "-->";
   }

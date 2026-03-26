@@ -82,7 +82,8 @@ export function parseDocument(doc) {
     // Get arrow label (bound text on the arrow itself)
     const label = textByContainer.get(el.id) || "";
 
-    const style = mapArrowStyle(el);
+    const direction = mapArrowDirection(el);
+    const style = mapArrowStyle(el, direction !== "none");
 
     edges.push({
       id: el.id,
@@ -90,6 +91,7 @@ export function parseDocument(doc) {
       target: endId,
       label,
       style,
+      direction,
     });
   }
 
@@ -126,23 +128,43 @@ export function mapShape(el) {
 
 /**
  * Map an Excalidraw arrow to a Mermaid edge style.
+ *
+ * @param {object} el - Excalidraw arrow element
+ * @param {boolean} [hasArrowhead] - Whether any arrowhead is present (avoids recomputing direction)
  */
-export function mapArrowStyle(el) {
-  const hasEnd = el.endArrowhead != null && el.endArrowhead !== "none";
+export function mapArrowStyle(el, hasArrowhead) {
+  if (hasArrowhead === undefined) {
+    hasArrowhead = mapArrowDirection(el) !== "none";
+  }
   const isDashed =
     el.strokeStyle === "dashed" || el.strokeStyle === "dotted";
   const isThick = (el.strokeWidth || 1) >= 4;
 
   if (isThick) {
-    return hasEnd ? "thick" : "thick-line";
+    return hasArrowhead ? "thick" : "thick-line";
   }
   if (isDashed) {
-    return hasEnd ? "dotted" : "dotted-line";
+    return hasArrowhead ? "dotted" : "dotted-line";
   }
-  if (hasEnd) {
+  if (hasArrowhead) {
     return "arrow";
   }
   return "line";
+}
+
+/**
+ * Determine arrow direction from Excalidraw arrowhead properties.
+ *
+ * @param {object} el - Excalidraw arrow element
+ * @returns {"forward"|"reverse"|"both"|"none"}
+ */
+export function mapArrowDirection(el) {
+  const hasStart = el.startArrowhead != null && el.startArrowhead !== "none";
+  const hasEnd = el.endArrowhead != null && el.endArrowhead !== "none";
+  if (hasStart && hasEnd) return "both";
+  if (hasStart) return "reverse";
+  if (hasEnd) return "forward";
+  return "none";
 }
 
 /**
