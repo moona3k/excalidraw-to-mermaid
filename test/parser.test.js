@@ -1,5 +1,5 @@
 import { describe, test, expect } from "bun:test";
-import { parseDocument, mapShape, mapArrowStyle, detectDirection } from "../src/parser.js";
+import { parseDocument, mapShape, mapArrowStyle, mapArrowDirection, detectDirection } from "../src/parser.js";
 
 describe("mapShape", () => {
   test("rectangle without roundness → rectangle", () => {
@@ -90,6 +90,82 @@ describe("mapArrowStyle", () => {
       strokeWidth: 2,
       endArrowhead: "none",
     })).toBe("line");
+  });
+
+  test("reverse arrow (startArrowhead only) → arrow", () => {
+    expect(mapArrowStyle({
+      strokeStyle: "solid",
+      strokeWidth: 2,
+      startArrowhead: "arrow",
+      endArrowhead: null,
+    })).toBe("arrow");
+  });
+
+  test("bidirectional arrow → arrow", () => {
+    expect(mapArrowStyle({
+      strokeStyle: "solid",
+      strokeWidth: 2,
+      startArrowhead: "arrow",
+      endArrowhead: "arrow",
+    })).toBe("arrow");
+  });
+});
+
+describe("mapArrowDirection", () => {
+  test("forward: endArrowhead only", () => {
+    expect(mapArrowDirection({
+      startArrowhead: null,
+      endArrowhead: "arrow",
+    })).toBe("forward");
+  });
+
+  test("reverse: startArrowhead only", () => {
+    expect(mapArrowDirection({
+      startArrowhead: "arrow",
+      endArrowhead: null,
+    })).toBe("reverse");
+  });
+
+  test("both: start and end arrowheads", () => {
+    expect(mapArrowDirection({
+      startArrowhead: "arrow",
+      endArrowhead: "arrow",
+    })).toBe("both");
+  });
+
+  test("none: no arrowheads", () => {
+    expect(mapArrowDirection({
+      startArrowhead: null,
+      endArrowhead: null,
+    })).toBe("none");
+  });
+
+  test("startArrowhead 'none' treated as absent", () => {
+    expect(mapArrowDirection({
+      startArrowhead: "none",
+      endArrowhead: "arrow",
+    })).toBe("forward");
+  });
+
+  test("endArrowhead 'none' treated as absent", () => {
+    expect(mapArrowDirection({
+      startArrowhead: "arrow",
+      endArrowhead: "none",
+    })).toBe("reverse");
+  });
+
+  test("both 'none' → none", () => {
+    expect(mapArrowDirection({
+      startArrowhead: "none",
+      endArrowhead: "none",
+    })).toBe("none");
+  });
+
+  test("non-arrow arrowhead types still count", () => {
+    expect(mapArrowDirection({
+      startArrowhead: "triangle",
+      endArrowhead: "dot",
+    })).toBe("both");
   });
 });
 
@@ -307,6 +383,48 @@ describe("parseDocument", () => {
   test("handles missing elements array", () => {
     const { nodes } = parseDocument({});
     expect(nodes.size).toBe(0);
+  });
+
+  test("parses reverse arrow direction", () => {
+    const doc = {
+      elements: [
+        { type: "rectangle", id: "a", x: 0, y: 0, width: 100, height: 50, isDeleted: false, groupIds: [] },
+        { type: "rectangle", id: "b", x: 200, y: 0, width: 100, height: 50, isDeleted: false, groupIds: [] },
+        {
+          type: "arrow", id: "arr",
+          x: 100, y: 25, width: 100, height: 0,
+          strokeStyle: "solid", strokeWidth: 2,
+          startBinding: { elementId: "a" },
+          endBinding: { elementId: "b" },
+          startArrowhead: "arrow",
+          endArrowhead: null,
+          isDeleted: false, groupIds: [],
+        },
+      ],
+    };
+    const { edges } = parseDocument(doc);
+    expect(edges[0].direction).toBe("reverse");
+  });
+
+  test("parses bidirectional arrow direction", () => {
+    const doc = {
+      elements: [
+        { type: "rectangle", id: "a", x: 0, y: 0, width: 100, height: 50, isDeleted: false, groupIds: [] },
+        { type: "rectangle", id: "b", x: 200, y: 0, width: 100, height: 50, isDeleted: false, groupIds: [] },
+        {
+          type: "arrow", id: "arr",
+          x: 100, y: 25, width: 100, height: 0,
+          strokeStyle: "solid", strokeWidth: 2,
+          startBinding: { elementId: "a" },
+          endBinding: { elementId: "b" },
+          startArrowhead: "arrow",
+          endArrowhead: "arrow",
+          isDeleted: false, groupIds: [],
+        },
+      ],
+    };
+    const { edges } = parseDocument(doc);
+    expect(edges[0].direction).toBe("both");
   });
 
   test("nodes without text get empty label", () => {

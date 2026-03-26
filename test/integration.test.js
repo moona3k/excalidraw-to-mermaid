@@ -80,6 +80,20 @@ describe("convert (API)", () => {
     expect(result.nodeCount).toBe(3);
   });
 
+  test("arrow-directions fixture has forward, reverse, and bidirectional arrows", () => {
+    const doc = JSON.parse(readFileSync(fixture("arrow-directions.excalidraw"), "utf-8"));
+    const result = convert(doc);
+
+    expect(result.nodeCount).toBe(4);
+    expect(result.edgeCount).toBe(3);
+    // Forward: Client --> Server
+    expect(result.mermaid).toContain("-->");
+    // Reverse (dashed): Client <-.- Database
+    expect(result.mermaid).toContain("<-.-");
+    // Bidirectional (thick): Client <==> Cache
+    expect(result.mermaid).toContain("<==>");
+  });
+
   test("empty document returns empty mermaid", () => {
     const doc = JSON.parse(readFileSync(fixture("empty.excalidraw"), "utf-8"));
     const result = convert(doc);

@@ -64,13 +64,25 @@ describe("renderNode", () => {
 });
 
 describe("renderConnector", () => {
+  // Forward (default)
   test("arrow → -->", () => expect(renderConnector({ style: "arrow" })).toBe("-->"));
+  test("arrow forward → -->", () => expect(renderConnector({ style: "arrow", direction: "forward" })).toBe("-->"));
   test("line → ---", () => expect(renderConnector({ style: "line" })).toBe("---"));
   test("dotted → -.->", () => expect(renderConnector({ style: "dotted" })).toBe("-.->"));
   test("dotted-line → -.-", () => expect(renderConnector({ style: "dotted-line" })).toBe("-.-"));
   test("thick → ==>", () => expect(renderConnector({ style: "thick" })).toBe("==>"));
   test("thick-line → ===", () => expect(renderConnector({ style: "thick-line" })).toBe("==="));
   test("unknown defaults to -->", () => expect(renderConnector({ style: "unknown" })).toBe("-->"));
+
+  // Reverse
+  test("arrow reverse → <--", () => expect(renderConnector({ style: "arrow", direction: "reverse" })).toBe("<--"));
+  test("dotted reverse → <-.-", () => expect(renderConnector({ style: "dotted", direction: "reverse" })).toBe("<-.-"));
+  test("thick reverse → <==", () => expect(renderConnector({ style: "thick", direction: "reverse" })).toBe("<=="));
+
+  // Bidirectional
+  test("arrow both → <-->", () => expect(renderConnector({ style: "arrow", direction: "both" })).toBe("<-->"));
+  test("dotted both → <-.->", () => expect(renderConnector({ style: "dotted", direction: "both" })).toBe("<-.->"));
+  test("thick both → <==>", () => expect(renderConnector({ style: "thick", direction: "both" })).toBe("<==>"));
 });
 
 describe("quoteLabel", () => {
@@ -183,6 +195,42 @@ describe("toMermaid", () => {
       direction: "TD",
     });
     expect(result.trim()).toBe("graph TD");
+  });
+
+  test("reverse arrow edge", () => {
+    const nodes = new Map([
+      ["n1", { label: "A", shape: "rectangle" }],
+      ["n2", { label: "B", shape: "rectangle" }],
+    ]);
+    const edges = [{ source: "n1", target: "n2", label: "", style: "arrow", direction: "reverse" }];
+    const groups = new Map();
+
+    const result = toMermaid({ nodes, edges, groups, direction: "LR" });
+    expect(result).toContain("A <-- B");
+  });
+
+  test("bidirectional arrow edge", () => {
+    const nodes = new Map([
+      ["n1", { label: "A", shape: "rectangle" }],
+      ["n2", { label: "B", shape: "rectangle" }],
+    ]);
+    const edges = [{ source: "n1", target: "n2", label: "", style: "arrow", direction: "both" }];
+    const groups = new Map();
+
+    const result = toMermaid({ nodes, edges, groups, direction: "LR" });
+    expect(result).toContain("A <--> B");
+  });
+
+  test("reverse arrow with label", () => {
+    const nodes = new Map([
+      ["n1", { label: "A", shape: "rectangle" }],
+      ["n2", { label: "B", shape: "rectangle" }],
+    ]);
+    const edges = [{ source: "n1", target: "n2", label: "response", style: "arrow", direction: "reverse" }];
+    const groups = new Map();
+
+    const result = toMermaid({ nodes, edges, groups, direction: "TD" });
+    expect(result).toContain("A <--|response| B");
   });
 
   test("edge with missing source/target skipped", () => {

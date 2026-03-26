@@ -1,0 +1,222 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "test",
+  "elements": [
+    {
+      "type": "rectangle",
+      "id": "client",
+      "x": 0,
+      "y": 100,
+      "width": 120,
+      "height": 60,
+      "strokeColor": "#000000",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roundness": { "type": 3 },
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "client_text", "type": "text" },
+        { "id": "arrow_forward", "type": "arrow" },
+        { "id": "arrow_reverse", "type": "arrow" },
+        { "id": "arrow_bidir", "type": "arrow" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "client_text",
+      "x": 20,
+      "y": 115,
+      "width": 80,
+      "height": 30,
+      "text": "Client",
+      "containerId": "client",
+      "isDeleted": false
+    },
+    {
+      "type": "rectangle",
+      "id": "server",
+      "x": 300,
+      "y": 0,
+      "width": 120,
+      "height": 60,
+      "strokeColor": "#000000",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roundness": { "type": 3 },
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "server_text", "type": "text" },
+        { "id": "arrow_forward", "type": "arrow" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "server_text",
+      "x": 320,
+      "y": 15,
+      "width": 80,
+      "height": 30,
+      "text": "Server",
+      "containerId": "server",
+      "isDeleted": false
+    },
+    {
+      "type": "rectangle",
+      "id": "database",
+      "x": 300,
+      "y": 100,
+      "width": 120,
+      "height": 60,
+      "strokeColor": "#000000",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roundness": null,
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "db_text", "type": "text" },
+        { "id": "arrow_reverse", "type": "arrow" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "db_text",
+      "x": 320,
+      "y": 115,
+      "width": 80,
+      "height": 30,
+      "text": "Database",
+      "containerId": "database",
+      "isDeleted": false
+    },
+    {
+      "type": "rectangle",
+      "id": "cache",
+      "x": 300,
+      "y": 200,
+      "width": 120,
+      "height": 60,
+      "strokeColor": "#000000",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roundness": { "type": 3 },
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "cache_text", "type": "text" },
+        { "id": "arrow_bidir", "type": "arrow" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "cache_text",
+      "x": 320,
+      "y": 215,
+      "width": 80,
+      "height": 30,
+      "text": "Cache",
+      "containerId": "cache",
+      "isDeleted": false
+    },
+    {
+      "type": "arrow",
+      "id": "arrow_forward",
+      "x": 120,
+      "y": 130,
+      "width": 180,
+      "height": 100,
+      "strokeColor": "#000000",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "startBinding": { "elementId": "client" },
+      "endBinding": { "elementId": "server" },
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "arrow_forward_text", "type": "text" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "arrow_forward_text",
+      "x": 170,
+      "y": 70,
+      "width": 60,
+      "height": 20,
+      "text": "request",
+      "containerId": "arrow_forward",
+      "isDeleted": false
+    },
+    {
+      "type": "arrow",
+      "id": "arrow_reverse",
+      "x": 120,
+      "y": 130,
+      "width": 180,
+      "height": 0,
+      "strokeColor": "#000000",
+      "strokeWidth": 2,
+      "strokeStyle": "dashed",
+      "startBinding": { "elementId": "client" },
+      "endBinding": { "elementId": "database" },
+      "startArrowhead": "arrow",
+      "endArrowhead": null,
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "arrow_reverse_text", "type": "text" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "arrow_reverse_text",
+      "x": 170,
+      "y": 120,
+      "width": 60,
+      "height": 20,
+      "text": "response",
+      "containerId": "arrow_reverse",
+      "isDeleted": false
+    },
+    {
+      "type": "arrow",
+      "id": "arrow_bidir",
+      "x": 120,
+      "y": 130,
+      "width": 180,
+      "height": 100,
+      "strokeColor": "#000000",
+      "strokeWidth": 4,
+      "strokeStyle": "solid",
+      "startBinding": { "elementId": "client" },
+      "endBinding": { "elementId": "cache" },
+      "startArrowhead": "arrow",
+      "endArrowhead": "arrow",
+      "isDeleted": false,
+      "groupIds": [],
+      "boundElements": [
+        { "id": "arrow_bidir_text", "type": "text" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "arrow_bidir_text",
+      "x": 170,
+      "y": 180,
+      "width": 60,
+      "height": 20,
+      "text": "sync",
+      "containerId": "arrow_bidir",
+      "isDeleted": false
+    }
+  ]
+}

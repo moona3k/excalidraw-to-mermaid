@@ -46,6 +46,15 @@ assets/               README example images + source .excalidraw files
 | strokeWidth >= 4 + arrowhead | `==>` |
 | no arrowhead variants | `---`, `-.-`, `===` |
 
+### Arrow Direction Mapping
+
+| `startArrowhead` | `endArrowhead` | Direction | Solid | Dashed | Thick |
+|---|---|---|---|---|---|
+| none | set | forward | `-->` | `-.->` | `==>` |
+| set | none | reverse | `<--` | `<-.-` | `<==` |
+| set | set | both | `<-->` | `<-.->` | `<==>` |
+| none | none | none | `---` | `-.-` | `===` |
+
 ### Direction Detection
 
 `detectDirection()` in parser.js compares horizontal vs vertical displacement across all edges. More horizontal = `graph LR`, more vertical = `graph TD`.
