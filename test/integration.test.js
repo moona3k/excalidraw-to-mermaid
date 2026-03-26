@@ -86,12 +86,12 @@ describe("convert (API)", () => {
 
     expect(result.nodeCount).toBe(4);
     expect(result.edgeCount).toBe(3);
-    // Forward: Client --> Server
-    expect(result.mermaid).toContain("-->");
-    // Reverse (dashed): Client <-.- Database
-    expect(result.mermaid).toContain("<-.-");
-    // Bidirectional (thick): Client <==> Cache
-    expect(result.mermaid).toContain("<==>");
+    // Forward (solid): Client -->|request| Server
+    expect(result.mermaid).toMatch(/\w+ -->\|request\| \w+/);
+    // Reverse (dashed): Database -.- arrow points back to Client
+    expect(result.mermaid).toMatch(/\w+ <-\.-\|response\| \w+/);
+    // Bidirectional (thick): Client <==>|sync| Cache
+    expect(result.mermaid).toMatch(/\w+ <==>\|sync\| \w+/);
   });
 
   test("empty document returns empty mermaid", () => {

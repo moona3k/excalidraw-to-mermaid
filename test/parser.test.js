@@ -422,6 +422,7 @@ describe("parseDocument", () => {
     };
     const { edges } = parseDocument(doc);
     expect(edges[0].direction).toBe("reverse");
+    expect(edges[0].style).toBe("arrow");
   });
 
   test("parses bidirectional arrow direction", () => {
@@ -443,6 +444,7 @@ describe("parseDocument", () => {
     };
     const { edges } = parseDocument(doc);
     expect(edges[0].direction).toBe("both");
+    expect(edges[0].style).toBe("arrow");
   });
 
   test("nodes without text get empty label", () => {
